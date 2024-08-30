@@ -1,0 +1,19 @@
+Alert Description:
+When security tools detected that a corporate user account associated with customer domains was exposed in a third-party data breach, which may include passwords, allowing threat actors to use the data for various malicious purposes.
+
+Details need to capture during investigation:
+1. The source information for the reported account leak.
+2. Account leak reported time
+3. The number of client accounts discovered in this.
+4. Username or email address.
+5. Verify whether the user is still active or not by checking "user account details". Make sure user is not disable in an any of the Active Directory (On-prem AD and Azure AD)
+6. For inactive users, No addtional investigation required as user's account is already in disabled state and user is not working with the customer.
+
+Containment Eradiction and Recovery:
+1. If the user is an active state, An email needs to send to the user for resetting password on all corporate applications including SSO(Azure AD/Okta) immediately.
+
+Best Practices:
+1. Ensure not to use corporate email addresses while signing up for personal or third-party services.
+2. Enable MFA in all SSO corporate applications.
+3. Recommend the user not to use the breached websites/Applications provided in the alert.
+
