@@ -1,0 +1,24 @@
+Alert Description:
+When an account makes too many unsuccessful attempts, an account will get locked out. An attacker might be attempting to brute force the account, this could be malicious. So it is important to validate the legitimacy of the failed authentication attempts.
+
+Details need to capture during investigation:
+1. Capture "ACCOUNT_LOCKED” event in the AD Admin Activity Logs.  
+2. Capture all User details including User account, Source host, Source IP, Timestamp, Service/Application used, Targeted asset/IP, Caller Computer Name, Logon type(Network or Interactive)
+3. Validate Computer Name which is captured in account locked event log with the user's computer name.
+4. Check the Asset Authentication log and look for the authentication failure events for the account around the time of alert.
+5. Verify whether the login attempt is from internal or external network.
+6. Identify the application or service that is responsible for the authentication failure.
+7. If the “Caller computer Name” field gives any host name, that is the source of the account locked out. 
+8. Check the user's password was changed recently or not and determine if the locked out was caused by cached credentials from that asset being used by an application to authenticate. We can obtain the user's most recent password change date from the users and accounts area. 
+9. Otherwise, you should ask user whether he/she is aware of the unsuccessful attempt from that host by Sending an email to the customer to validate the legitimacy of the failed attempts.
+10. Check the failure reason or the event IDs available in the alert logs like 4625 or 4776 and the sub status
+
+Containment Eradiction and Recovery:
+1. If logon type is interactive & unknown and account compromised, Advise customer to track down the person who attempted to brute force the account and resetting the strong password for the affected account immediately.
+2. If brute force attack is observed, recommend implementing conditional access policy in Azure AD/Country blocks in Okta.
+3. Disable basic authentication in Office 365 and enforce MFA wherever applicable.
+
+Best Practices:
+1. Implement conditional access policy in Azure AD/ country block in Okta.
+2. Enforce MFA wherever applicable.
+3. Recommend the user to adhere to organisation password policy.
