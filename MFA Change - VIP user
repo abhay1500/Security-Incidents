@@ -1,0 +1,22 @@
+Alert Description:
+This alert is triggered when a VIP user, updates or changes their Multi-Factor Authentication settings. This could indicate legitimate actions, but it also has the potential to be a sign of suspicious activity, especially if unauthorized.
+
+Details need to capture during investigation:
+1. Type of change (e.g., addition, removal, or modification of an MFA method).
+2. Previous and current MFA methods (e.g., SMS, authenticator app, hardware token).
+3. Timestamp of the change.
+4. IP address and geolocation details from where the change was made.
+5. Device type, operating system, and browser used.
+6. Any indicators of unusual activity, such as multiple failed login attempts before the change.
+7. Review logs for other recent activities by the user (login attempts, password changes, access to sensitive resources) and Check for any correlation with other security alerts.
+8. Review the audit logs from the Azure portal to uncover additional activity or information, such as device details, check the MDM enrolment, or if any actions like deleting security info were taken followed by subsequent user registration of security info.
+9. If an unexpected activity occurs, the account should be compromised. In this situation, the password needs to be reset right away and we should contact the customer immediately.
+
+Containment Eradiction and Recovery:
+1. Recommend resetting the password and reconfigure MFA if the user's account is compromised.
+1. Temporarily disable the account if the change seems unauthorized until verification is complete.
+2. Restrict access to sensitive systems and data.
+3. Implement additional monitoring on the user's account for any further suspicious activities like adding under watchlist.
+
+Best Practices:
+1. Periodically review and update access controls and MFA policies, especially for VIP users.
