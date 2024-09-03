@@ -1,0 +1,23 @@
+Alert Description:
+This alert triggers when a user who does not have administrative privileges tries to gain access by impersonating an administrator, which could indicate malicious intent, compromised credentials, or internal threats.
+
+Details need to capture during investigation.
+1. Username, user ID, and associated roles/permissions.
+2. Account status (active, disabled, locked).
+3. Authentication methods used (e.g., password, MFA).
+4. Location (IP address and geolocation) and device used for the attempt.
+5. Resources or services the user tried to access (including Source Asset & Destination Asset)
+6. Check for any failed logins for the source user and the administrator account before the Administrator impersonation event, to see if any brute force is attempted on these accounts.
+7. Review associated security logs, including login, access, and system logs.
+8. Check for any preceding suspicious activities (failed logins, password resets).
+
+Containment Eradiction and Recovery:
+1. Immediately suspend or restrict the non-administrator account involved.
+2. Block any suspicious IP addresses or devices associated with the attempt.
+3. Reset passwords and enforce stronger authentication mechanisms for sensitive accounts.
+4. Review and adjust user permissions to ensure least-privilege access.
+
+Best Practices:
+1. Implement least privilege access and regularly review user roles and permissions.
+2. Enforce multi-factor authentication (MFA) for all administrative accounts.
+3. Set up alerts for any unusual authentication attempts or privilege escalation activities.
