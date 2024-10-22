@@ -1,0 +1,20 @@
+Alert Description:
+When an authentication from a country that is in the unapproved for the users (List provided by Client).
+
+Details need to capture during investigation:
+1. Capture "Ingress” and "Asset authentication" events Logs.  
+2. Capture User details including User account, host details, IP Address, Unapproved Location, Timestamp, Service/Application used, ISP organisation name.
+3. Review the alert details to determine if the user account has successfully logged in from an unapproved country. Verify whether the device associated with the user matches the expected device. Check the resultDescription; if access was not blocked, it means the user was allowed to log in from the country, indicating that the user is included under a conditional access policy.
+4. Check if there is any communication from the customer indicating that the user is traveling to that country.
+5. Review the ingress locations for the user to see if alerts are triggered while the user is using a VPN.
+
+Containment Eradiction and Recovery:
+1. If the login is unexpected and user account is compromised, then change the password immediately
+2. Remove the suspected compromised account from all administrative role groups.
+
+Best Practices:
+1. Reset passwords for all applications including SSO and non-SSO application.
+2. Recommend enabling multi-factor authentication (MFA) for the account. 
+4. Recommend using a strong password.
+5. Enable conditional access policy in Azure AD.
+3. Recommend the user to adhere to organisation password policy.
