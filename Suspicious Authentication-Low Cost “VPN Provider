@@ -1,0 +1,17 @@
+Alert Description:
+If a user attempts to authenticated to his domain account by making use of a VPN provider that has a low reputation.if a user makes use of any of these VPN’s defined by vendor that aren’t reputed. 
+
+Details need to capture during investigation:
+1. Capture "Ingress” events Logs.  
+2. Capture User details including User account, host details, IP Address, Location, Timestamp, Service/Application used, VPN Provider.
+3. Validate Computer Name which is captured in event log with the user's computer name.
+4. Verify whether the user is utilizing a VPN on a corporate device or a personal one. Identify from the device name whether it is a company asset or a personal asset (this can be verified under Rapid7's Users and Asset Information). If the device is a Mac and the user agent is Jamf, it indicates a corporate asset. If the user agent is different, it indicates a personal asset. The same applies for Windows devices, but an Intune agent will appear in the logs if it is a corporate asset.
+Additionally, to avoid false positives, verify the IP address before and after connecting to the VPN; they should be different.
+
+Containment Eradiction and Recovery:
+1. If the login activity is unknown to the user, then recommend changing the password for the account immediately.
+2. If a low-cost VPN is used on company asset, recommend user to uninstall the low-cost VPN and use company provided VPN.
+
+Best Practices:
+1. Enforce authorized VPNs only, also recommend user not to connect low cost VPNs on corporate asset.
+3. Recommend the user to adhere to organisation password policy.
